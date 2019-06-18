@@ -1,0 +1,166 @@
+/********************************************
+   AUTHOR:  			Georges KABUKU
+   WEBSITE:   			http://www.blogGK.com/
+	TEMPLATE NAME:		 
+    
+ *******************************************/
+ 
+/********************************************
+   HTML ELEMENTS
+********************************************/ 
+
+#content-wrap {
+	clear: both;
+	width: 97%;
+	padding: 0; 
+	margin: 10px auto;
+}
+
+/* Main Column */
+#main {
+	float: left;
+	width: 93%;
+	padding: 0; margin: 5px 0 0 5px;
+	display: inline;
+}
+#main h2 {
+	margin-top: 10px;
+	font: Bold 140% 'Trebuchet MS', Tahoma, Sans-serif;
+	color: #88ac0b; 
+	padding: 5px 0 5px 25px; 	
+	border-bottom: 1px solid #EFF0F1;
+	background: #FFF url(../images/square-green.png) no-repeat 3px 50%;	
+	text-transform: none;
+}
+#main h2 a {
+	background: none;
+	color: #88ac0b;
+	text-decoration: none;
+}
+
+#main ul li {
+	list-style-image: url(../images/bullet.gif);
+}
+
+/* links */
+
+/* headers */
+
+/* start - table */
+table {
+	border-collapse: collapse;
+	margin: 10px;	
+}
+th strong {
+	color: #fff;
+}
+th {
+	background: #93BC0C;
+	height: 29px;
+	padding-left: 12px;
+	padding-right: 12px;
+	color: #FFF;
+	text-align: center;
+	border-left: 1px solid #B6D59A;
+	border-bottom: solid 2px #FFF;
+}
+form th {
+    text-align: left;
+}
+tr {
+	height: 30px;
+}
+td {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 1px solid #FFF;
+	border-bottom: solid 1px #ffffff;
+    text-align: center;
+}
+form td {
+    text-align: left;
+}
+td.first,th.first {
+	border-left: 0px;
+}
+tr.row-a {
+	background: #F8F8F8;
+}
+tr.row-b {
+	background: #EFEFEF;
+}
+/* end - table */
+
+/* form elements */
+form {
+	margin:10px; padding: 0 5px;
+	border: 1px solid #f2f2f2; 
+	background-color: #FAFAFA; 	
+}
+label {
+	display:block;
+	font-weight:bold;
+	margin:5px 0;
+}
+input {
+	padding:2px;
+	border:1px solid #eee;
+	font: normal 1em Verdana, sans-serif;
+	color:#777;
+}
+textarea {
+	padding:2px;
+	font: normal 1em Verdana, sans-serif;
+	border:1px solid #eee;
+	height:100px;
+	display:block;
+	color:#777;
+}
+input.button { 
+	font: bold 12px Arial, Sans-serif; 
+	height: 24px;
+	margin: 0;
+	padding: 2px 3px; 
+	color: #FFF;
+	background: #8EB50C url(../images/button-bg.jpg) repeat-x 0 0;
+	border: none;
+}
+
+
+/********************************************
+   LAYOUT
+********************************************/ 
+
+/* header links */
+
+/* Connection User */
+#connex {
+	display: block;
+	border: solid 2px black;
+	width : 600px;
+	margin: auto;
+} 
+
+#connex input {
+	border: solid 1px gray;
+	width : 350px;
+	margin-top: 15px;
+	background-color: rgb(240,240,148); 
+} 
+
+#connex label {
+	width : 100px;
+	text-align: right;
+	margin: 10px;
+}
+
+#connex label, input {
+	display: inline-block;
+}
+
+#connex input[type=submit] {
+	background: none;
+	width : 125px;
+	margin: 15px; 
+
+} 
