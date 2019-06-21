@@ -31,7 +31,8 @@ class NewsMajController extends BackController
     }
        
   }
-//-  
+ 
+//
 
 
   public function processForm()
