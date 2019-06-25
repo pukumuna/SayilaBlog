@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
   <route url="/" module="News" action="index" ></route>
@@ -17,4 +18,25 @@
   <route url="/comment-update-([0-9]+)\.html" module="NewsMaj" action="updateComment" vars="id" ></route>  
   <route url="/comment-delete-([0-9]+)\.html" module="NewsMaj" action="deleteComment" vars="id" ></route>
 
+=======
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+  <route url="/" module="News" action="index" ></route>
+  <route url="/news.html" module="News" action="index" ></route>
+  <route url="/news-([0-9]+)\.html" module="News" action="show" vars="id"></route>
+  <route url="/commenter-([0-9]+)\.html" module="News" action="insertComment" vars="id" ></route>
+  <route url="/userConnect.html"   module="Connexion" action="connex" vars="id" ></route>
+  <route url="/userInsert.html"    module="Connexion" action="insert" vars="id" ></route>
+  <route url="/userUpdate.html"    module="Connexion" action="update" vars="id" ></route>
+  <route url="/userDelete.html"    module="Connexion" action="delete" vars="id" ></route>
+  <route url="/userDeconnect.html" module="Connexion" action="deconnect" ></route>
+  <route url="/newsMaj.html" module="NewsMaj" action="index" ></route>
+  <route url="/news-insert.html" module="NewsMaj" action="insert" ></route>
+  <route url="/news-update-([0-9]+)\.html" module="NewsMaj" action="update" vars="id" ></route>
+  <route url="/news-delete-([0-9]+)\.html" module="NewsMaj" action="delete" vars="id" ></route>
+  <route url="/commentsNews-([0-9]+)\.html" module="NewsMaj" action="commentsNews" vars="id" ></route>
+  <route url="/comment-update-([0-9]+)\.html" module="NewsMaj" action="updateComment" vars="id" ></route>  
+  <route url="/comment-delete-([0-9]+)\.html" module="NewsMaj" action="deleteComment" vars="id" ></route>
+
+>>>>>>> 235d14acabf1407c7d198c81741e238b16281aca
 </routes>
