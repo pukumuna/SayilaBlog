@@ -1,14 +1,8 @@
 <?php
 // Check for empty fields
-<<<<<<< HEAD
 if(empty($_POST['name'])  		||
    empty($_POST['email']) 		||
    empty($_POST['phone']) 		||
-=======
-if(empty($_POST['name'])  	||
-   empty($_POST['email']) 	||
-   empty($_POST['phone']) 	||
->>>>>>> 235d14acabf1407c7d198c81741e238b16281aca
    empty($_POST['message'])	||
    !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
    {

@@ -19,7 +19,7 @@ class NewsController extends BackController
     // On récupère le manager des Posts.
     $manager = $this->managers->getManagerOf('Post');
     
-    // Cette ligne, vous ne pouviez pas la deviner sachant qu'on n'a pas encore touché au modèle.
+    // Cette ligne, vous ne pouviez pas la deviner sachant qu'on n'a pas encore touché au modèle;
     // Contentez-vous donc d'écrire cette instruction, nous implémenterons la méthode ensuite.
     $listePosts = $manager->getList(0, $nombrePosts);
     
