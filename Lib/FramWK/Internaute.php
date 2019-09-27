@@ -1,5 +1,5 @@
 <?php
-namespace OCFram;
+namespace FramWK;
 
 session_start();
 
