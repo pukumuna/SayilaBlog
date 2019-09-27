@@ -1,13 +1,13 @@
 
-<p>Par <em><?= $post['auteur']; ?></em>, le <?= $post['dateMaj']->format('d-m-Y à H:i:s'); ?></p>
+<p>Par <em><?= $post['auteur']; ?></em>, le <?= $post['dateMaj']->format('d-m-Y Ã  H:i:s'); ?></p>
 <h2><?= $post['titre'] ?></h2>
 <p><?= nl2br($post['content']) ?></p>
 
 
-<p style="text-align: right;"><small><em>Modifiée le <?= $post['dateMaj']->format('d-m-Y à H:i:s'); ?></em></small></p>
+<p style="text-align: right;"><small><em>ModifiÃ©e le <?= $post['dateMaj']->format('d-m-Y Ã  H:i:s'); ?></em></small></p>
 
 <?php if (empty($comments)) { ?> -
- <p>Aucun commentaire n'a encore été posté. Soyez le premier à en laisser un !</p>
+ <p>Aucun commentaire n'a encore Ã©tÃ© postÃ©. Soyez le premier Ã  en laisser un !</p>
 <?php
 }
 
@@ -15,7 +15,7 @@ foreach ($comments as $comment)
 { ?>
 <fieldset>
   <legend>
-    Posté par <strong><?php echo($comment['auteur']); ?></strong> le <?= $comment['dateMaj']->format('d-m-Y à H:i:s'); ?>
+    PostÃ© par <strong><?php echo($comment['auteur']); ?></strong> le <?= $comment['dateMaj']->format('d-m-Y Ã  H:i:s'); ?>
     <?php if ($internaute->isAuthenticated()) { ?> -
       <a href="/comment-update-<?= $comment['id'] ?>.html">Modifier</a> |
       <a href="/comment-delete-<?= $comment['id'] ?>.html">Supprimer</a>
