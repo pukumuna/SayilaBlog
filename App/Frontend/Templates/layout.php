@@ -10,7 +10,8 @@
     <meta name="author" content="">
 
     <title> <?= isset($title) ? $title : 'Blog de Georges Kabuku' ?></title>
-
+    
+    <base href="http://bloggk/">
     <!-- Bootstrap Core CSS -->
     <link href="boot/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -48,9 +49,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    
-                    <?php if (! $internaute->isAdministrateur()) { ?>
-                     
+                                                     
                         <li class="page-scroll">
                             <a href="/">Accueil</a>
                         </li>
@@ -75,36 +74,9 @@
                         <?php } ?>
 
                         <li class="page-scroll">
-                            <a href="#contact">Contact</a> -->
+                            <a href="#contact">Contact</a> 
                         </li>
-
-                    <?php } ?>
-
-                    <?php if ( $internaute->isAdministrateur()) { ?>
-                     
-                        <li class="page-scroll">
-                            <a href="/">Accueil</a>
-                           <!-- <a href="/news.html">Accueil</a> -->
-                        </li>
-
-                        <li class="page-scroll">
-                            <a href="/newsMaj.html">News</a>
-                        </li>
-                                                                          
-                        <li class="page-scroll">
-                           <a href="/news-insert.html">Ajout news</a>
-                        </li>
-
-                        <li class="page-scroll">
-                            <a href="/userDeconnect.html">Se Deconnecter</a>
-                        </li>
-                        
-                    <?php } ?>
- 
-                    <li class="page-scroll">
-                        <!-- <a href="#contact">Contact</a> -->
-                    </li>
-
+            
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -114,20 +86,22 @@
 
     <!-- Header -->
     <header>
-        <?php if ( $internaute->isHead() ) { ?>
-           <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <img class="img-responsive" src="img/george.jpg" alt="">
-                        <div class="intro-text">
-                            <span class="name">Georges Kabuku</span>
-                            <hr class="star-light">
-                            <span class="skills">Web Developer - Php/Symphony - Experience Analyste Developper Mainframe</span>
-                        </div>
+        <?php if ( $internaute->isHead()) { ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/george.jpg" alt="">
+                        
+                    <div class="intro-text">
+                        <span class="name">Georges Kabuku</span>
+                        <a href="curriculum.html", style="color: white">Curriculum Vitae</a>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Php/Symphony - Experience Analyste Developper Mainframe</span>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        </div>
+        <?php } ?>   
     </header>
             
     <section id="portfolio">
@@ -189,32 +163,32 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form action='contact_me.php' method="post" >
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <input type="text" class="form-control" placeholder="Name" name="name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required data-validation-required-message="Please enter your phone number.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Message" name="message" required data-validation-required-message="Please enter a message."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -222,7 +196,8 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                             <input type="submit" class="btn btn-success btn-lg" value="Send">
+                              <!-- button type="submit" class="btn btn-success btn-lg">Send</button -->
                             </div>
                         </div>
                     </form>
@@ -237,15 +212,13 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <h3><a href="/userConnect.html">Administration</a></h3>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
