@@ -1,8 +1,8 @@
 <?php
 namespace App\Backend\Modules\Connexion;
 
-use \OCFram\BackController;
-use \OCFram\HTTPRequest;
+use \FramWK\BackController;
+use \FramWK\HTTPRequest;
 use \Entity\User;
 
 class ConnexionController extends BackController

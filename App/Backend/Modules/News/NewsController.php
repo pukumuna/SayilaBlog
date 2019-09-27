@@ -1,8 +1,8 @@
 <?php
 namespace App\Backend\Modules\News;
 
-use \OCFram\BackController;
-use \OCFram\HTTPRequest;
+use \FramWK\BackController;
+use \FramWK\HTTPRequest;
 use \Entity\Post;
 use \Entity\Comment;
 
