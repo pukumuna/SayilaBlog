@@ -11,10 +11,9 @@ class ConnexionController extends BackController
   {   
     $this->page->addVar('titPage', 'Connexion');
     
-    if ($this->request->postExists('email')) {
+    if ($this->request->postExists('email') || $this->request->postExists('pseudo') ) {
 
       $pseudo = $this->request->postData('pseudo');
-      //if (empty($value))
       $email = $this->request->postData('email');
       
       $user = new User([
@@ -26,7 +25,7 @@ class ConnexionController extends BackController
 
       if ($user->isValid())
       { //echo "<br><br><br><br><br>AA Pseudo = ", $pseudo, " && Email = ", $email, "print user ", print_r($user);
-       $userDB = $this->managers->getManagerOf('User')->exist($email); 
+       $userDB = $this->managers->getManagerOf('User')->exist($user); 
           
        //$this->app->internaute()->setAuthenticated('false');                     
        switch (true) {
@@ -36,19 +35,15 @@ class ConnexionController extends BackController
 
           case $userDB->password() == $user->password():
             $this->app->internaute()->setAttribute('user',$userDB);
-            $this->app->internaute()->setAttribute('pseudo',$userDB->pseudo());
-            $this->app->internaute()->setAttribute('email',$userDB->email());
-            $this->app->internaute()->setAttribute('password',$userDB->password());
             $this->app->internaute()->setAuthenticated(true);
             $this->app->internaute()->setAdministrateur($userDB->role() == 'admin' ? true:false);
             $this->app->internaute()->setFlash('Utilisateur connecté !!!');
+            
             //$this->app->httpResponse()->redirect('.');
-            if ($userDB->role() == 'admin')
-              echo "<br><br><br> Retour admin Administrateur = ", 
-              $this->app->internaute()->getAttribute('admin');
+            /*if ($userDB->role() == 'admin')
+               $this->app->internaute()->getAttribute('admin');
             else  
-              echo "<br><br><br> Retour faux Administrateur = ", 
-              $this->app->internaute()->getAttribute('admin');
+               $this->app->internaute()->getAttribute('admin'); */
             
             $this->page->addVar('user', $userDB);
    
@@ -68,7 +63,7 @@ class ConnexionController extends BackController
         $this->page->addVar('erreurs', $user->erreurs());
       } 
     else
-      echo "<br><br><br>User; aucune saisie = ";
+      $this->app->internaute()->setFlash('Veillez saisir les info. de connexion et Validez !');
         
   }
 
@@ -76,7 +71,7 @@ class ConnexionController extends BackController
   {
     $this->page->addVar('titPage', 'Ajout d\'un utilisateur');
       
-    if ($this->request->postExists('email'))
+    if ($this->request->postExists('email') )
     {
       $pseudo = $this->request->postData('pseudo');
       //if (empty($value))
@@ -94,7 +89,7 @@ class ConnexionController extends BackController
       
       if ($user->isValid())
         {  
-          if  (is_null($this->managers->getManagerOf('User')->exist($email)))
+          if  (is_null($this->managers->getManagerOf('User')->exist($user)))
               { //Insertion
                           
                 $this->managers->getManagerOf('User')->save($user);
@@ -128,9 +123,9 @@ class ConnexionController extends BackController
     session_destroy();
 
     //exit('https://www.google.com');
-    $this->app->httpResponse()->redirect('http://blogOpen');  
-    
+    //$this->app->httpResponse()->redirect('http://blogOpen');  
+    $this->app->httpResponse()->redirect('.');  
     
   }
   
-} //class ConnexionController
+} //class ConnexionController111
