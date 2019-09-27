@@ -6,6 +6,7 @@ use \OCFram\HTTPRequest;
 use \Entity\Post;
 use \Entity\Comment;
 
+
 class NewsController extends BackController
 { 
   public function executeIndex()
@@ -59,11 +60,11 @@ class NewsController extends BackController
   {
     $this->page->addVar('titPage', 'Ajout d\'un commentaire');
       
-    if ($this->request->postExists('pseudo'))
+    if ($this->request->postExists('auteur'))
     {
       $comment  = new Comment([
         'post'    => $this->request->getData('id'),
-        'auteur'  => $this->request->postData('pseudo'),
+        'auteur'  => $this->request->postData('auteur'),
         'content' => $this->request->postData('content'),
         'validation' => '0'
       ]);

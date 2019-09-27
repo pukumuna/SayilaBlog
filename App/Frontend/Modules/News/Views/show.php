@@ -17,8 +17,8 @@ foreach ($comments as $comment)
   <legend>
     Posté par <strong><?php echo($comment['auteur']); ?></strong> le <?= $comment['dateMaj']->format('d-m-Y à H:i:s'); ?>
     <?php if ($internaute->isAuthenticated()) { ?> -
-      <a href="/comment-update-<?= $comment['id'] ?>.html">Modifier</a> |
-      <a href="/comment-delete-<?= $comment['id'] ?>.html">Supprimer</a>
+      <a href="/admin/comment-update-<?= $comment['id'] ?>.html">Modifier</a> |
+      <a href="/admin/comment-delete-<?= $comment['id'] ?>.html">Supprimer</a>
     <?php } ?>
   </legend>
   <p><?= nl2br(htmlspecialchars($comment['content'])); ?></p>
