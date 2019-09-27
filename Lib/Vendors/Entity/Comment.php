@@ -16,11 +16,12 @@ class Comment extends Entity
   const POST_INVALIDE = 1;          
   const AUTEUR_INVALIDE = 2;
   const CONTENT_INVALIDE = 3;
-  const VALIDATION_INVALIDE = 4;
+  const VALIDATE_INVALIDE = 4;
 
   public function isValid()
   {
-    return !(empty($this->auteur) || empty($this->content));
+    //return !(empty($this->auteur) || empty($this->content));
+    return (empty($this->erreurs));
   }
 
   public function setId($id)
@@ -31,7 +32,7 @@ class Comment extends Entity
 
   public function setPost($post)
   {
-    if (!is_int($post))
+    if (!is_numeric($post))
     {
       $this->erreurs[] = self::POST_INVALIDE;
     }
@@ -60,6 +61,10 @@ class Comment extends Entity
 
   public function setValidation($validation)
   {
+    if (!isset($validation) || ($validation < '0') || ($validation > '1') )
+    {
+      $this->erreurs[] = self::VALIDATE_INVALIDE;
+    }
     $this->validation = $validation;
   }
 
