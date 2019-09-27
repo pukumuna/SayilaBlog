@@ -50,7 +50,7 @@ abstract class UserManagerInterface
    * @param $value(pseudo/email) L'identifiant du utilisateur
    * @return user
    */
-  abstract public function exist($email);
+  abstract public function exist(User $user);
 
   /**
    * Méthode permettant de supprimer un utilisateur.

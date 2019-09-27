@@ -54,10 +54,12 @@ class UserManager extends UserManagerInterface
     echo '<br>GET de $user : Nothing !!!', $id;
     return null;
   }
-public function exist($email)
-  {echo "<br><br><br><br><br>AQ  Email = ", $email;
-    $requete = $this->dao->prepare('SELECT id, pseudo, email, password, role FROM Users WHERE email =:email AND email > ""');
-    $requete->bindValue(':email', $email);
+public function exist(User $user)
+  {echo "<br><br><br><br><br>AQ  Email = ", $user->email();
+  echo "AQ  Pseudo = ", $user->pseudo();
+    $requete = $this->dao->prepare('SELECT id, pseudo, email, password, role FROM Users WHERE email =:email OR pseudo =:pseudo');
+    $requete->bindValue(':email', $user->email());
+    $requete->bindValue(':pseudo', $user->pseudo());
     $requete->execute();
     
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\User');
