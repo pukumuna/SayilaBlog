@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-use \OCFram\Entity;
+use \FramWK\Entity;
 
 class Comment extends Entity
 {

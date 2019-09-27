@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-use \OCFram\Manager;
+use \FramWK\Manager;
 use \Entity\User;
 
 abstract class UserManagerInterface

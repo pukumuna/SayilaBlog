@@ -2,7 +2,6 @@
 namespace Model;
 
 use \Entity\Post;
-#use \OCFram\PDO;
 
 class PostManager extends PostManagerInterface
 {
