@@ -11,13 +11,13 @@ abstract class Application
   protected $config;
   protected $internaute;
 
-  public function __construct()
+  public function __construct($appliDir, $nameApp)
   { 
     $this->httpRequest = new HTTPRequest($this);
     $this->httpResponse = new HTTPResponse($this);
 
-    $this->name = ''; //Documenter dans FrontedApplication
-    $this->appDirectory = ''; //Documenter dans FrontedAppli
+    $this->name = $nameApp; //Documenter dans FrontedApplication
+    $this->appDirectory = $appliDir; //Documenter dans FrontedAppli
 
    // $varconfig = $this->appDirectory.'Lib\OCFram\Config';
     //$this->config = new $varconfig($this);

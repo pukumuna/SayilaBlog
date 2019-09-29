@@ -60,7 +60,7 @@
                                                                 
                         <?php if (! $internaute->isAuthenticated()) { ?>
                             <li class="page-scroll">
-                                <a href="/userInsert.html">S'inscrire</a>
+                                <a href="/admin/userInsert.html">S'inscrire</a>
                             </li>
                             <li class="page-scroll">
                                 <a href="/admin/connection.html">Se connecter</a>

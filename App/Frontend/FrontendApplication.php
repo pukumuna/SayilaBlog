@@ -7,10 +7,10 @@ class FrontendApplication extends Application
 {
   public function __construct($appliDir, $nameApp)
   { //Appelle constructeur de Application
-    parent::__construct();
-    $this->name = $nameApp;
+    parent::__construct($appliDir, $nameApp);
+    //$this->name = $nameApp;
     //$this->name = 'Frontend';
-    $this->appDirectory = $appliDir;
+    //$this->appDirectory = $appliDir;
     
   }
 

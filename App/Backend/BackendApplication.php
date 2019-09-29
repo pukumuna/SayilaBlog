@@ -5,12 +5,12 @@ use \FramWK\Application;
 
 class BackendApplication extends Application
 {
-  public function __construct($appliDir)
+  public function __construct($appliDir, $nameApp)
   {
-    parent::__construct();
+    parent::__construct($appliDir, $nameApp);
 
-    $this->name = 'Backend';
-    $this->appDirectory = $appliDir;
+   // $this->name = 'Backend';
+    //$this->appDirectory = $appliDir;
   }
 
   public function run()
