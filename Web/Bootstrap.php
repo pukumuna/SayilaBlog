@@ -23,8 +23,8 @@ if (!isset($_GET['app']) || !file_exists($Dir.'/App/'.$_GET['app'])) $_GET['app'
 require $Dir.'/Lib/FramWK/SplClassLoader.php';
 
 // On va ensuite enregistrer les autoloads correspondant à chaque vendor (OCFram, App, Model, etc.)
-$OCFramLoader = new SplClassLoader('FramWK', $Dir.'\Lib');
-$OCFramLoader->register();
+$FramLoader = new SplClassLoader('FramWK', $Dir.'\Lib');
+$FramLoader->register();
 
 $appLoader = new SplClassLoader('App', $Dir);
 $appLoader->register();

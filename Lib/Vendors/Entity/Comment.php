@@ -41,7 +41,7 @@ class Comment extends Entity
 
   public function setAuteur($auteur)
   {
-    if (!is_string($auteur))
+    if (!is_string($auteur) || empty($auteur))
     {
       $this->erreurs[] = self::AUTEUR_INVALIDE;
     }

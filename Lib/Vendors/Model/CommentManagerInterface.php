@@ -21,7 +21,8 @@ abstract class CommentManagerInterface
   public function save(Comment $comment)
   {
     if ($comment->isValid())
-    {
+    { echo "<br><br><br><br><br>la commande est valide est doit être créer ou modifier !!!!";
+      echo "<br>la commande est valide est doit être créer ou modifier !!!!";
       $comment->isNew() ? $this->add($comment) : $this->modify($comment);
     }
     else

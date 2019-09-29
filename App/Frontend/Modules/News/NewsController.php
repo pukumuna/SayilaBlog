@@ -60,18 +60,18 @@ class NewsController extends BackController
   }
   
   public function executeInsertComment()
-  {
+  {     
     $this->page->addVar('titPage', 'Ajout d\'un commentaire');
-      
+    
     if ($this->request->postExists('auteur'))
-    {
+    { 
       $comment  = new Comment([
         'post'    => $this->request->getData('id'),
         'auteur'  => $this->request->postData('auteur'),
         'content' => $this->request->postData('content'),
         'validation' => '0'
       ]);
-      
+        
       if ($comment->isValid())
       { 
         $this->managers->getManagerOf('Comment')->save($comment);
