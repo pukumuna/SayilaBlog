@@ -26,7 +26,7 @@ class PostManager extends PostManagerInterface
 
   public function getList($debut = -1, $limite = -1)
   {
-    $sql = 'SELECT id, auteur, titre, chapo, content, slug, dateMaj FROM posts ORDER BY id DESC';
+    $sql = 'SELECT id, auteur, titre, chapo, content, slug, dateCre, dateMaj FROM posts ORDER BY id DESC';
     
     if ($debut != -1 || $limite != -1)
     {
@@ -40,7 +40,8 @@ class PostManager extends PostManagerInterface
     
     foreach ($listePosts as $post)
     { 
-      $post->setDateMaj($post->dateMaj() );    
+      $post->setDateCre($post->dateCre() );
+      $post->setDateMaj($post->dateMaj() );
     }
     
     $requete->closeCursor();
@@ -50,7 +51,7 @@ class PostManager extends PostManagerInterface
   
   public function getUnique($id)
   {
-    $requete = $this->_db->prepare('SELECT id, auteur, titre, chapo, content, slug, dateMaj FROM posts WHERE id = :id');
+    $requete = $this->_db->prepare('SELECT id, auteur, titre, chapo, content, slug, dateCre ,dateMaj FROM posts WHERE id = :id');
     $requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
     $requete->execute();
     
@@ -58,8 +59,10 @@ class PostManager extends PostManagerInterface
     
     if ($post = $requete->fetch())
     {
-      $post->setDateMaj($post->dateMaj());  
-
+      //$post->setDateMaj($post->dateMaj());
+      //$this->dateCre = new \DateTime($post->dateCre());  
+      $post->setDateCre($post->dateCre() );
+      $post->setDateMaj($post->dateMaj() );
       return $post;
     }
     
@@ -73,7 +76,7 @@ public function count()
 
 protected function add(Post $post)
   {
-    $requete = $this->_db->prepare('INSERT INTO posts SET auteur = :auteur, titre = :titre, chapo = :chapo, slug = :slug, content = :content, dateMaj = NOW()');
+    $requete = $this->_db->prepare('INSERT INTO posts SET auteur = :auteur, titre = :titre, chapo = :chapo, slug = :slug, content = :content, $dateCre = NOW(),dateMaj = NOW()');
     
     $requete->bindValue(':auteur',  $post->auteur());
     $requete->bindValue(':titre',   $post->titre());
@@ -86,7 +89,7 @@ protected function add(Post $post)
 
 protected function modify(Post $post)
   {
-    $requete = $this->_db->prepare('UPDATE posts SET auteur = :auteur, titre = :titre, chapo = :chapo, content = :content WHERE id = :id');
+    $requete = $this->_db->prepare('UPDATE posts SET auteur = :auteur, titre = :titre, chapo = :chapo, content = :content, dateMaj = NOW() WHERE id = :id');
     
     $requete->bindValue(':auteur', $post->auteur());
     $requete->bindValue(':titre', $post->titre());

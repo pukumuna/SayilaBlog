@@ -51,7 +51,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <?php if (! $internaute->isAdministrateur()) { ?>
+                    <?php if (! $internaute->isAdministrateur() ||  
+                                $internaute->isComment() ) { ?>
                      
                         <li class="page-scroll">
                             <a href="/">Accueil</a>
@@ -61,28 +62,23 @@
                             <a href="/news.html">News</a>
                         </li>
                                                                 
-                        <?php if (! $internaute->isAuthenticated()) { ?>
-                            <li class="page-scroll">
-                                <a href="/userInsert.html">S'inscrire</a>
-                            </li>
-                            <li class="page-scroll">
-                                <a href="/userConnect.html">Se connecter</a>
-                            </li>
-                        <?php } ?>
-                        
                         <?php if ($internaute->isAuthenticated()) { ?>
                             <li class="page-scroll">
-                                <a href="/userDeconnect.html">Se Deconnecter</a>
+                                <a href="/admin/deconnection.html">Se Deconnecter</a>
+                            </li> 
+                            
+                        <?php } else { ?>
+                                                
+                            <li class="page-scroll">
+                                <a href="/admin/connection.html">Se connecter</a>
                             </li>
                         <?php } ?>
 
-                        <li class="page-scroll">
-                            <a href="#contact">Contact</a> 
-                        </li>
-
+                        
                     <?php } ?>
 
-                    <?php if ( $internaute->isAdministrateur()) { ?>
+                    <?php if ( $internaute->isAdministrateur() &&
+                             ! $internaute->isComment()) { ?>
                      
                         <li class="page-scroll">
                             <a href="/admin/">Accueil</a>
@@ -98,7 +94,7 @@
                         </li>
 
                         <li class="page-scroll">
-                            <a href="/admin/userDeconnect.html">Se Deconnecter</a>
+                            <a href="/admin/deconnection.html">Se Deconnecter</a>
                         </li>
                         
                     <?php } ?>
@@ -242,7 +238,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3><a href="/userConnect.html">Administration</a></h3>
+                        <h3><a href="/admin/">Administration</a></h3>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>

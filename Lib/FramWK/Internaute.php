@@ -31,9 +31,14 @@ class Internaute extends ApplicationComponent
     return isset($_SESSION['flash']);
   }
 
+  public function isComment()
+  {
+    return isset($_SESSION['comment']) && $_SESSION['comment'] === true;
+  }
+
   public function isFrontend()
   {
-    return isset($_SESSION['front']) && $_SESSION['front'] === true;
+    return isset($_SESSION['frontend']) && $_SESSION['frontend'] === true;
   }
 
   public function isHead()
@@ -66,14 +71,34 @@ class Internaute extends ApplicationComponent
     $_SESSION['auth'] = $authenticated;
   }
 
+  public function setHead($valBool)
+  {
+    if (!is_bool($valBool))
+    {
+      throw new \InvalidArgumentException('La valeur spécifiée à la méthode Internaute::setHead() doit être un boolean');
+    }
+
+    $_SESSION['head'] = $valBool;
+  }
+
+  public function setComment($valBool)
+  {
+    if (!is_bool($valBool))
+    {
+      throw new \InvalidArgumentException('La valeur spécifiée à la méthode Internaute::setComment() doit être un boolean');
+    }
+
+    $_SESSION['comment'] = $valBool;
+  }
+
   public function setFrontend($valBool)
   {
     if (!is_bool($valBool))
     {
-      throw new \InvalidArgumentException('La valeur spécifiée à la méthode Internaute::setFronted() doit être un boolean');
+      throw new \InvalidArgumentException('La valeur spécifiée à la méthode Internaute::setFrontend() doit être un boolean');
     }
 
-    $_SESSION['front'] = $valBool;
+    $_SESSION['frontend'] = $valBool;
   }
 
   public function setAdministrateur($boolval)

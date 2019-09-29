@@ -15,8 +15,8 @@ foreach ($comments as $comment)
 { ?>
 <fieldset>
   <legend>
-    Posté par <strong><?php echo($comment['auteur']); ?></strong> le <?= $comment['dateMaj']->format('d-m-Y à H:i:s'); ?>
-    <?php if ($internaute->isAuthenticated()) { ?> -
+    Posté par <strong><?php echo($comment['auteur']); ?></strong> le <?= $comment['datePublic']->format('d-m-Y à H:i:s'); ?>
+    <?php if ($internaute->isAdministrateur()) { ?> -
       <a href="/admin/comment-update-<?= $comment['id'] ?>.html">Modifier</a> |
       <a href="/admin/comment-delete-<?= $comment['id'] ?>.html">Supprimer</a>
     <?php } ?>

@@ -10,6 +10,7 @@ class Post extends Entity
             $chapo,
             $content,
             $slug,
+            $dateCre,
             $dateMaj;
 
   const AUTEUR_INVALIDE = 1;
@@ -81,12 +82,17 @@ class Post extends Entity
     $this->slug = $slug;
   }
 
+  public function setDateCre($dateCre)
+  {
+    // 15-03-$this->dateMaj = $dateMaj;
+    $this->dateCre = new \DateTime($dateCre);
+  }
+
   public function setDateMaj($dateMaj)
   {
     // 15-03-$this->dateMaj = $dateMaj;
     $this->dateMaj = new \DateTime($dateMaj);
   }
-
   // GETTERS //
   public function auteur()
   {
@@ -111,6 +117,10 @@ class Post extends Entity
   public function slug()
   {
     return $this->slug;
+  }
+  public function dateCre()
+  {
+    return $this->dateCre;
   }
 
   public function dateMaj()

@@ -11,6 +11,9 @@ class NewsController extends BackController
 { 
   public function executeIndex()
   {
+    //$this->app->internaute()->setComment(false); //Retourner à Gestion Commmentaires apr
+    $this->app->internaute()->setFrontend(true); //retourner à Frontend apres Connexion - Maj Comment
+
     $nombrePosts = $this->app->config()->get('nombre_posts');
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
     

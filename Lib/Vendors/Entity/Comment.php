@@ -75,7 +75,7 @@ class Comment extends Entity
 
   public function setDatePublic($datePublic)
   {
-    $this->datePublic = $datePublic;
+    $this->datePublic = new \DateTime($datePublic);
   }
 
   public function id()

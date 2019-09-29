@@ -11,6 +11,8 @@ class NewsController extends BackController
 ///
   public function executeIndex()
   {
+    $this->app->internaute()->setComment(false); //Ne pas retourner à Gestion Commmentaires(layout)
+    $this->app->internaute()->setFrontend(false); //Pas retourner à Frontend apres Connexion(layou)
     $this->page->addVar('title', 'Gestion des news');
 
     $manager = $this->managers->getManagerOf('Post');
@@ -109,7 +111,7 @@ class NewsController extends BackController
   public function executeUpdateComment()
   {
     $this->page->addVar('title', 'Modification d\'un commentaire');
-    $this->app->internaute()->setFrontend(true);
+    $this->app->internaute()->setComment(true);
     if ($this->request->postExists('auteur'))
     {
       $comment = new Comment([
@@ -145,7 +147,7 @@ class NewsController extends BackController
   }
 
   public function executeDeleteComment()
-  { $this->app->internaute()->setFrontend(true);
+  { $this->app->internaute()->setComment(true);
     $comment = $this->managers->getManagerOf('Comment')->get($this->request->getData('id'));
 
     //$this->managers->getManagerOf('Comments')->delete($request->getData('id'));

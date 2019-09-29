@@ -14,8 +14,7 @@ class ConnexionController extends BackController
     if ($this->request->postExists('email') || $this->request->postExists('pseudo')) {
 
       $pseudo = $this->request->postData('pseudo');
-      //if (empty($value))
-      $email = $this->request->postData('email');
+      $email  = $this->request->postData('email');
       
       $user = new User([
       'pseudo' => $pseudo,
@@ -43,17 +42,15 @@ class ConnexionController extends BackController
             $this->app->internaute()->setAdministrateur($userDB->role() == 'admin' ? true:false);
             $this->app->internaute()->setFlash('Utilisateur connecté !!!');
             //$this->app->httpResponse()->redirect('.');
-            if ($this->app->internaute()->isAdministrateur()) {
-              echo "<br> Retour admin Administrateur = "; 
-              $this->page->addVar('user', $userDB);
-            }  
-            else { 
-              echo "<br> Retour faux Administrateur = "; 
-              $this->app->internaute()->setFlash('L\'utilisateur n\'est pas un Administrateur.');  
-            }
-            
-            //if ($this->app->internaute()->isAuthenticated()) 
-            //echo '<br><br>Etat auth : ', $this->app->internaute()->getAttribute('auth');
+            if ($this->app->internaute()->isFrontend())
+               $this->app->httpResponse()->redirect('/news.html');
+            else 
+              if ($this->app->internaute()->isAdministrateur())
+              //echo "<br> Retour admin Administrateur = "; 
+                 $this->app->httpResponse()->redirect('/admin/news.html');
+              else  
+              //echo "<br> Retour faux Administrateur = "; 
+                 $this->app->internaute()->setFlash('L\'utilisateur n\'est pas un Administrateur.');  
             break;
 
           default:
@@ -125,10 +122,12 @@ class ConnexionController extends BackController
   public function executeDeconnect()
   {
     session_destroy();
-
+    echo "<br><br><br><br><br>Password 1 = user->password(), Password 2 = ", 
     //exit('https://www.google.com');
-    //$this->app->httpResponse()->redirect('http://blogOpen');  
-    $this->app->httpResponse()->redirect('.');  
+    //$this->app->httpResponse()->redirect('http://blogOpen');
+    //$this->app->internaute()->setAuthenticated(false);
+    //$this->app->internaute()->setAdministrateur(false);
+    $this->app->httpResponse()->redirect('/news.html');  
     
   }
   

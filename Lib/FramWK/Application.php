@@ -78,11 +78,15 @@ abstract class Application
     // A supprimer !!!
     //echo "<br><br><br><br>Controleur instancié :module: ", $matchedRoute->module(), ' ET action : ' , $matchedRoute->action(), ' ET vars :', 
     // print_r($matchedRoute->vars() ), '<br>';
-    if ($matchedRoute->url() == '/')
+    /*if ($matchedRoute->url() == '/')
         $this->internaute->setAttribute("head", true);
     else
         $this->internaute->setAttribute("head", false); 
-        
+    */  
+    if ( $matchedRoute->url() == '/' || $matchedRoute->url() === '/admin/') 
+        $this->internaute->setHead(true);  
+    else
+        $this->internaute->setHead(false);                                    
     //Voir constructeur BackController: Affectation Vue-Page
     return new $controllerClass($this, $matchedRoute->module(), $matchedRoute->action());
   }

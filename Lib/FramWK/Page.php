@@ -19,7 +19,7 @@ class Page extends ApplicationComponent
   public function getGeneratedPage()
   {
     
-   echo "<br>ContentFile : ", $this->contentFile;
+   //echo "<br>ContentFile : ", $this->contentFile;
 
     if (!file_exists($this->contentFile))
     {

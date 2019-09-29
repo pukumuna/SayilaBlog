@@ -63,13 +63,13 @@
                                 <a href="/userInsert.html">S'inscrire</a>
                             </li>
                             <li class="page-scroll">
-                                <a href="/userConnect.html">Se connecter</a>
+                                <a href="/admin/connection.html">Se connecter</a>
                             </li>
                         <?php } ?>
                         
                         <?php if ($internaute->isAuthenticated()) { ?>
                             <li class="page-scroll">
-                                <a href="/userDeconnect.html">Se Deconnecter</a>
+                                <a href="/admin/deconnection.html">Se Deconnecter</a>
                             </li>
                         <?php } ?>
 
@@ -212,7 +212,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3><a href="/userConnect.html">Administration</a></h3>
+                        <h3><a href="/admin/">Administration</a></h3>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>

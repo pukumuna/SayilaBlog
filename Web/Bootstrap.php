@@ -3,18 +3,18 @@
 const DEFAULT_APP = 'Frontend';
 
 $Dir = __DIR__;
-echo '<br><br><br><br><br>DIR:', $Dir; 
+//echo '<br><br><br><br><br>DIR:', $Dir; 
 
 if (!empty($internaute) && $internaute->isAuthenticated())
    $_GET['app'] = 'Backend';
 
-if (!empty($_GET['app']))
-    echo '<br>!!! $-GET-APP not vide = ', $_GET['app'] ; 
+/*if (!empty($_GET['app']))
+    echo '<br>!!! $-GET-APP not vide = ', $_GET['app'] ; */
 
 $lenWeb = 4; // lenweb -> "/Web = 4"
 $Dir = substr ($Dir , 0 , $Lgr= strlen($Dir) - $lenWeb );
 
-echo '<br>DIR:', $Dir; 
+//echo '<br>DIR:', $Dir; 
 // Si l'application n'est pas valide, on va charger l'application par défaut qui se chargera de générer une erreur 404
 if (!isset($_GET['app']) || !file_exists($Dir.'/App/'.$_GET['app'])) $_GET['app'] = DEFAULT_APP;
 
