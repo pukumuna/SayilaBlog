@@ -5,19 +5,19 @@ abstract class Application
 {
   protected $httpRequest;
   protected $httpResponse;
-  protected $name;
-  protected $appDirectory;
+  protected $appName;
+  protected $appDir;
   
   protected $config;
   protected $internaute;
 
-  public function __construct($appliDir, $nameApp)
+  public function __construct($dirApp, $nameApp)
   { 
     $this->httpRequest = new HTTPRequest($this);
     $this->httpResponse = new HTTPResponse($this);
 
-    $this->name = $nameApp; //Documenter dans FrontedApplication
-    $this->appDirectory = $appliDir; //Documenter dans FrontedAppli
+    $this->appName = $nameApp; //Documenter dans FrontedApplication
+    $this->appDir = $dirApp; //Documenter dans FrontedAppli
 
    // $varconfig = $this->appDirectory.'Lib\OCFram\Config';
     //$this->config = new $varconfig($this);
@@ -28,7 +28,7 @@ abstract class Application
   public function getController()
   {//echo "<br>RECHERCHE ROUTE !!!<br>";
     $router = new Router;
-    $file = $this->appDirectory.'/App/'.$this->name.'/Config/routes.xml';
+    $file = $this->appDir.'/App/'.$this->appName.'/Config/routes.xml';
     //le = $this->appDirectory.'\\App\\'.$this->name.'\\'.'Config\routes.xml'; 
     $xml = new \DOMDocument;
     //$xml->load(__DIR__.'/App/'.$this->name.'/Config/routes.xml');
@@ -74,15 +74,10 @@ abstract class Application
     $_GET = array_merge($_GET, $matchedRoute->vars());
 
     // On instancie le contrôleur.
-    $controllerClass = 'App\\'.$this->name.'\\Modules\\'.$matchedRoute->module().'\\'.$matchedRoute->module().'Controller';
-    // A supprimer !!!
-    //echo "<br><br><br><br>Controleur instancié :module: ", $matchedRoute->module(), ' ET action : ' , $matchedRoute->action(), ' ET vars :', 
-    // print_r($matchedRoute->vars() ), '<br>';
-    /*if ($matchedRoute->url() == '/')
-        $this->internaute->setAttribute("head", true);
-    else
-        $this->internaute->setAttribute("head", false); 
-    */  
+    $controllerClass = 'App\\'.$this->appName.'\\Modules\\'.$matchedRoute->module().'\\'.$matchedRoute->module().'Controller';
+     
+    // echo '<br>', print_r( $matchedRoute->vars() ), '<br>';
+      
     if ( $matchedRoute->url() == '/' || $matchedRoute->url() === '/admin/') 
         $this->internaute->setHead(true);  
     else
@@ -103,9 +98,9 @@ abstract class Application
     return $this->httpResponse;
   }
 
-  public function name()
+  public function appName()
   {
-    return $this->name;
+    return $this->appName;
   }
 
   public function config()
@@ -118,9 +113,9 @@ abstract class Application
     return $this->internaute;
   }
 
-  public function appDirectory()
+  public function appDir()
   {
-    return $this->appDirectory;
+    return $this->appDir;
   }
   
 }

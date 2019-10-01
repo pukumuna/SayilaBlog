@@ -10,7 +10,7 @@ class Config extends ApplicationComponent
     if (!$this->vars)
     {
       $xml = new \DOMDocument;
-      $file = $this->app->appDirectory().'\\App\\'.$this->app->name().'\\'.'Config\app.xml';
+      $file = $this->app->appDir().'\\App\\'.$this->app->appName().'\\'.'Config\app.xml';
       
       
       $xml->load($file);

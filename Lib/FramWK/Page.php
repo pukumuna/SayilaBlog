@@ -38,15 +38,15 @@ class Page extends ApplicationComponent
       require $this->contentFile;
 
     $content = ob_get_clean(); //Transfert de la view
-    //if ($internaute->isPortfolio())
-    //    $internaute->setAttribute('view',$content);
+    
     //ob_get_clean: Lit le contenu courant du tampon de sortie puis l'efface 
     
     ob_start();
-       $appliDir = $this->app()->appDirectory();
-       $appliDir = $appliDir.'/App/'.$this->app()->name().'/Templates/layout.php';
+       $varDir = $this->app()->appDir().'/App/'.$this->app()->appName();
+       //$appliDir = $varDir.'/Templates/layout.php';
        //echo "<br><br><br>AppliDir = ", $appliDir;
-       require $appliDir; 
+       //require $appliDir; 
+       require $varDir.'/Templates/layout.php';
        return ob_get_clean(); //retour pour affichage avec exit()
   }
 

@@ -5,9 +5,9 @@ use \FramWK\Application;
 
 class FrontendApplication extends Application
 {
-  public function __construct($appliDir, $nameApp)
+  public function __construct($dirApp, $nameApp)
   { //Appelle constructeur de Application
-    parent::__construct($appliDir, $nameApp);
+    parent::__construct($dirApp, $nameApp);
     //$this->name = $nameApp;
     //$this->name = 'Frontend';
     //$this->appDirectory = $appliDir;

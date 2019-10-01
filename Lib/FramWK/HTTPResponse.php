@@ -68,7 +68,7 @@ class HTTPResponse extends ApplicationComponent
     $appDir = $this->app()->appDirectory();
 
     $this->page = new Page($this->app());
-    $this->page->setContentFile($appDir.'/APP/'.$name1.'/Errors/405.html');
+    $this->page->setContentFile($appDir.'/App/'.$name1.'/Errors/405.html');
     
     $this->addHeader('HTTP/1.0 405 Not Found');
     

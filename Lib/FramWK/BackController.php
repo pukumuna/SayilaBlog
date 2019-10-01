@@ -8,7 +8,7 @@ abstract class BackController
   protected $module = '';
   protected $page = null;
   protected $view = '';
-  protected $user = null;
+  //protected $user = null;
   protected $request = null;
   protected $managers = null;
   
@@ -17,13 +17,13 @@ abstract class BackController
     $this->managers = new Managers($app,'PDO', PDOFactory::getMysqlConnexion());
     $this->page = new Page($app);
     
-    $this->app = $app;
     $this->setModule($module);
     $this->setAction($action);
-    $this->setView($action); //Affectation Vue (View) à la Page par setContentFile($xxx)
+    $this->setView($action,$module,$app); //Affectation Vue (View=action) à Page par setContentFile
+    $this->app = $app;
     $this->request = $app->httpRequest();
-    if ($app->internaute()->getAttribute('user'))
-       $this->user = $app->internaute()->getAttribute('user');
+    /*if ($app->internaute()->getAttribute('user'))
+       $this->user = $app->internaute()->getAttribute('user'); */
     /*
     if ($app->internaute()->getAttribute('email')) 
        echo '<br><br><br><br><br>User-email !!!!!!! : ', 
@@ -84,7 +84,7 @@ abstract class BackController
     $this->action = $action;
   }
   
-  public function setView($view)
+  public function setView($view,$module,$app)
   {
     if (!is_string($view) || empty($view))
     {
@@ -92,13 +92,13 @@ abstract class BackController
     }
     
     $this->view = $view;
-    $appliDir = $this->app->appDirectory();
-    $this->page->setContentFile($appliDir.'/App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php');
+    $varDir = $app->appDir().'/App/'.$app->appName().'/Modules/'.$module; 
+    //$appName = $app->appName();
+    //$this->page->setContentFile($appDir.'/App/'.$appName.'/Modules/'.$this->module.'/Views/'.$view.'.php');
+    $this->page->setContentFile($varDir.'/Views/'.$view.'.php');
   }
 
   public function managers()
-  {        
-       
-  }
+  { }
 
 }

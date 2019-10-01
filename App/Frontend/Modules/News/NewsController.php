@@ -64,7 +64,7 @@ class NewsController extends BackController
     $this->page->addVar('titPage', 'Ajout d\'un commentaire');
     
     if ($this->request->postExists('auteur'))
-    { 
+    { //echo "<br><br><br>Impression variables server<br>";print_r($_SERVER);echo "<br>Fin<br>";
       $comment  = new Comment([
         'post'    => $this->request->getData('id'),
         'auteur'  => $this->request->postData('auteur'),

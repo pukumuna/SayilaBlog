@@ -109,7 +109,8 @@ class NewsController extends BackController
   }
 
   public function executeUpdateComment()
-  {
+  { echo "<br>br><br><br><br><br>Super globale SESSION : ", print_r($_SESSION), "<br>";
+    echo "<br>Identifiant de globale SESSION : ", $_COOKIE['PHPSESSID'], "<br>";
     $this->page->addVar('title', 'Modification d\'un commentaire');
     $this->app->internaute()->setComment(true);
     if ($this->request->postExists('auteur'))

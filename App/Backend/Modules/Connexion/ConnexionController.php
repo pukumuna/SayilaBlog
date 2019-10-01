@@ -24,7 +24,7 @@ class ConnexionController extends BackController
       $this->page->addVar('user', $user);
 
       if ($user->isValid())
-      { //echo "<br><br><br><br><br>AA Pseudo = ", $pseudo, " && Email = ", $email, "print user ", print_r($user);
+      { 
        $userDB = $this->managers->getManagerOf('User')->exist($user); 
        //$userDB = $this->managers->getManagerOf('User')->exist($email);   
        //$this->app->internaute()->setAuthenticated('false');                     
@@ -121,13 +121,13 @@ class ConnexionController extends BackController
 
   public function executeDeconnect()
   {
+    echo "<br><br><br><br>Super globale Session : ", print_r($_SESSION), "<br>";
     session_destroy();
-    echo "<br><br><br><br><br>Password 1 = user->password(), Password 2 = ", 
+    
     //exit('https://www.google.com');
     //$this->app->httpResponse()->redirect('http://blogOpen');
-    //$this->app->internaute()->setAuthenticated(false);
-    //$this->app->internaute()->setAdministrateur(false);
-    $this->app->httpResponse()->redirect('/news.html');  
+    ;
+    $this->app->httpResponse()->redirect('/');  
     
   }
   
