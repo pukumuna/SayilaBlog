@@ -18,10 +18,7 @@ class Page extends ApplicationComponent
 
   public function getGeneratedPage()
   {
-    
-   //echo "<br>ContentFile : ", $this->contentFile;
-
-    if (!file_exists($this->contentFile))
+   if (!file_exists($this->contentFile))
     {
       throw new \RuntimeException('La vue spécifiée n\'existe pas');
     }
@@ -43,9 +40,7 @@ class Page extends ApplicationComponent
     
     ob_start();
        $varDir = $this->app()->appDir().'/App/'.$this->app()->appName();
-       //$appliDir = $varDir.'/Templates/layout.php';
-       //echo "<br><br><br>AppliDir = ", $appliDir;
-       //require $appliDir; 
+    
        require $varDir.'/Templates/layout.php';
        return ob_get_clean(); //retour pour affichage avec exit()
   }

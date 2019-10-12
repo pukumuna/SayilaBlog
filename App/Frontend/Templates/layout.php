@@ -115,7 +115,7 @@
             </div>
             <div id="content-wrap">
                 <section id="main">
-                    <?php if ($internaute->hasFlash()) echo '<p style="text-align: center;">', $internaute->getFlash(), '</p>'; ?>
+                    <?php if ($internaute->hasFlash()) echo '<p class="msgFlash">', $internaute->getFlash(), '</p>'; ?>
 
                     <?= $content ?>
                 </section>    

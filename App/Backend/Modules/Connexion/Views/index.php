@@ -12,7 +12,6 @@
 	</p>
 	<p>
 		<?= isset($erreurs) && in_array(\Entity\User::PASSWORD_INVALIDE, $erreurs) ? 'Le mot de passe est invalide.<br />' : '' ?>
-		<?= 'password saisie = ', isset($user) ? $user['password'] : '', '<br>'  ?>
 	   <label for="Password" >Password : </label>      
 	   <input  type="password" placeholder="" name="password"  value="<?= isset($user) ? $user['password'] : '' ?>" required />
 	</p>
