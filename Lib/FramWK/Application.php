@@ -18,20 +18,18 @@ abstract class Application
 
     $this->appName = $nameApp; //Documenter dans FrontedApplication
     $this->appDir = $dirApp; //Documenter dans FrontedAppli
-
-   // $varconfig = $this->appDirectory.'Lib\OCFram\Config';
-    //$this->config = new $varconfig($this);
+   
     $this->config = new Config($this);
     $this->internaute = new Internaute($this);
   }
 
   public function getController()
-  {//echo "<br>RECHERCHE ROUTE !!!<br>";
+  {
     $router = new Router;
     $file = $this->appDir.'/App/'.$this->appName.'/Config/routes.xml';
-    //le = $this->appDirectory.'\\App\\'.$this->name.'\\'.'Config\routes.xml'; 
+   
     $xml = new \DOMDocument;
-    //$xml->load(__DIR__.'/App/'.$this->name.'/Config/routes.xml');
+   
     $xml->load($file);
     
     $routes = $xml->getElementsByTagName('route');
@@ -51,13 +49,12 @@ abstract class Application
       $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
       
     }
-
-    // echo '<br>Requesturi, ROUTE RECHERCHEE  = ',$this->httpRequest->requestURI(),'<br>';
+    
     try
     {
       // On récupère la route correspondante à l'URL.
-      //echo '<br>matchedRoute =', $this->httpRequest->requestURI();
-      $matchedRoute = $router->getRoute($this->httpRequest->requestURI()); //$route->match($url) ++
+
+      $matchedRoute = $router->getRoute($this->httpRequest->requestURI()); //$route->match($url) 
       //preg_match('#^'.$this->url.'$#', $url, $matches);
       
     }
@@ -75,9 +72,7 @@ abstract class Application
 
     // On instancie le contrôleur.
     $controllerClass = 'App\\'.$this->appName.'\\Modules\\'.$matchedRoute->module().'\\'.$matchedRoute->module().'Controller';
-     
-    // echo '<br>', print_r( $matchedRoute->vars() ), '<br>';
-      
+          
     if ( $matchedRoute->url() == '/' || $matchedRoute->url() === '/admin/') 
         $this->internaute->setHead(true);  
     else

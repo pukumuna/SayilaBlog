@@ -3,9 +3,6 @@ namespace FramWK;
 
 session_start();
 
-//$_SESSION['auth'] = false;
-//$_SESSION['admin'] = false;
-
 class Internaute extends ApplicationComponent
 {
   public function __construct($app)

@@ -12,7 +12,7 @@ class NewsController extends BackController
   public function executeIndex()
   {
     $this->app->internaute()->setComment(false); //Ne pas retourner à Gestion Commmentaires(layout)
-    $this->app->internaute()->setFrontend(false); //Pas retourner à Frontend apres Connexion(layou)
+    $this->app->internaute()->setFrontend(false); //Pas retourner à Frontend apres Connexion(layout)
     $this->page->addVar('title', 'Gestion des news');
 
     $manager = $this->managers->getManagerOf('Post');
@@ -23,7 +23,7 @@ class NewsController extends BackController
 
   public function executeShow()
   {
-    //echo 'recherche du post identifiant ===:(tentative) ';
+  
 
     $post = $this->managers->getManagerOf('Post')->getUnique($this->request->getData('id'));
     
@@ -105,7 +105,7 @@ class NewsController extends BackController
     $this->app->internaute()->setFlash('La news a bien été supprimée !');
     
     //$this->app->httpResponse()->redirect('.');
-    $this->app->httpResponse()->redirect('/admin/');
+    $this->app->httpResponse()->redirect('/admin/news.html');
   }
 
   public function executeUpdateComment()

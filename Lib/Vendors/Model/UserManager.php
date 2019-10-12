@@ -27,8 +27,7 @@ class UserManager extends UserManagerInterface
     $q->bindValue(':email', $user->email());
     $q->bindValue(':role',  $user->role());
     $q->bindValue(':actif', $user->actif());
-    //$q->bindValue(':dateMaj', '0001-01-01 00:00:01');
-
+    
     $q->execute();
     
     $user->setId($this->dao->lastInsertId()); //Recup Identifiant
@@ -37,26 +36,21 @@ class UserManager extends UserManagerInterface
   public function get($id)
   {
     $requete = $this->dao->prepare('SELECT pseudo, email, password FROM Users WHERE id =:id');
-    //$requete->bindValue(':keyname', $value);
+    
     $requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
     $requete->execute();
     
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\User');
     
     if ($user = $requete->fetch())
-    { /*
-      $posts->setDateAjout(post \DateTime($posts->dateAjout()));
-      $posts->setDateModif(post \DateTime($posts->dateModif()));
-      */
-      echo '<br><br><br>GET de $user :OK ', $id;
+    { 
       return $user;
     }
-    echo '<br>GET de $user : Nothing !!!', $id;
+    
     return null;
   }
 public function exist(User $user)
-  {echo "<br><br><br><br><br>AQ  Email = ", $user->email();
-  echo "AQ  Pseudo = ", $user->pseudo();
+  {
     $requete = $this->dao->prepare('SELECT id, pseudo, email, password, role FROM Users WHERE email =:email OR pseudo =:pseudo');
     $requete->bindValue(':email', $user->email());
     $requete->bindValue(':pseudo', $user->pseudo());
@@ -65,14 +59,10 @@ public function exist(User $user)
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\User');
     
     if ($user = $requete->fetch())
-    { /*
-      $posts->setDateAjout(post \DateTime($posts->dateAjout()));
-      $posts->setDateModif(post \DateTime($posts->dateModif()));
-      */
-      echo '<br><br><br>Extraction de $user :OK ', print_r($user),'***';
+    { 
       return $user;
     }
-    echo '<br>Extraction de $user : Nothing !!!';
+    
     return null;
   }
 protected function modify(User $user)

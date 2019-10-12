@@ -17,11 +17,11 @@ class CommentManager extends CommentManagerInterface
   }
 
   protected function add(Comment $comment)
-  { //datePublic = "1000.01.01 00.00.00"
+  { 
     $q = $this->dao->prepare('INSERT INTO comments SET post = :post,
          auteur = :auteur, content = :content, validation = :validation,
          dateMaj = NOW(), datePublic = NOW() ');
-  //datePublic = "1000.01.01 00.00.00" ');   
+  
     $q->bindValue(':post', $comment->post(), \PDO::PARAM_INT);
     $q->bindValue(':auteur', $comment->auteur());
     $q->bindValue(':content', $comment->content());

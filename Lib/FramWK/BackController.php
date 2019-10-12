@@ -22,23 +22,11 @@ abstract class BackController
     $this->setView($action,$module,$app); //Affectation Vue (View=action) à Page par setContentFile
     $this->app = $app;
     $this->request = $app->httpRequest();
-    /*if ($app->internaute()->getAttribute('user'))
-       $this->user = $app->internaute()->getAttribute('user'); */
-    /*
-    if ($app->internaute()->getAttribute('email')) 
-       echo '<br><br><br><br><br>User-email !!!!!!! : ', 
-       $app->internaute()->getAttribute('email'); 
-    if ($app->internaute()->getAttribute('auth')) 
-       echo '<br><br><br><br><br>User-auth !!!!!!! : ', 
-       $app->internaute()->getAttribute('auth');   
-    if ($app->internaute()->isAuthenticated()) echo '<br><br>Internaute bien connecté  !!!!!!! ',
-      ' A ',$app->internaute()->getAttribute('auth');
-     else echo '<br><br>Internaute non connecté  !!!!!',' A ',$app->internaute()->getAttribute('auth'); */
   }
 
 
   public function execute()
-  { //echo "CODE ACTION : ', $this->action";
+  { 
     $method = 'execute'.ucfirst($this->action);
 
     if (!is_callable([$this, $method]))
@@ -46,7 +34,6 @@ abstract class BackController
       throw new \RuntimeException('L\'action "'.$this->action.'" n\'est pas définie sur ce module');
     }
     $this->$method();//ex $this->executeUpdate()
-    //$this->$method($this->app->httpRequest());  //ex $this->executeUpdate(/admin/news-3.html) ===> resultat -> page.
   }
 
   public function page()
@@ -93,8 +80,7 @@ abstract class BackController
     
     $this->view = $view;
     $varDir = $app->appDir().'/App/'.$app->appName().'/Modules/'.$module; 
-    //$appName = $app->appName();
-    //$this->page->setContentFile($appDir.'/App/'.$appName.'/Modules/'.$this->module.'/Views/'.$view.'.php');
+    
     $this->page->setContentFile($varDir.'/Views/'.$view.'.php');
   }
 

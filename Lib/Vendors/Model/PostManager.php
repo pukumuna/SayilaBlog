@@ -22,8 +22,6 @@ class PostManager extends PostManagerInterface
     $this->_db = $dao;
   }
 
-
-
   public function getList($debut = -1, $limite = -1)
   {
     $sql = 'SELECT id, auteur, titre, chapo, content, slug, dateCre, dateMaj FROM posts ORDER BY id DESC';
@@ -59,8 +57,6 @@ class PostManager extends PostManagerInterface
     
     if ($post = $requete->fetch())
     {
-      //$post->setDateMaj($post->dateMaj());
-      //$this->dateCre = new \DateTime($post->dateCre());  
       $post->setDateCre($post->dateCre() );
       $post->setDateMaj($post->dateMaj() );
       return $post;
@@ -76,7 +72,7 @@ public function count()
 
 protected function add(Post $post)
   {
-    $requete = $this->_db->prepare('INSERT INTO posts SET auteur = :auteur, titre = :titre, chapo = :chapo, slug = :slug, content = :content, $dateCre = NOW(),dateMaj = NOW()');
+    $requete = $this->_db->prepare('INSERT INTO posts SET auteur = :auteur, titre = :titre, chapo = :chapo, slug = :slug, content = :content, dateCre = NOW(),dateMaj = NOW()');
     
     $requete->bindValue(':auteur',  $post->auteur());
     $requete->bindValue(':titre',   $post->titre());

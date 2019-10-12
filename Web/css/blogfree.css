@@ -1,6 +1,6 @@
 /********************************************
    AUTHOR:  			Georges KABUKU
-   WEBSITE:   			http://www.blogGK.com/
+   WEBSITE:   			http://www.blogGK.fr/
 	TEMPLATE NAME:		 
     
  *******************************************/
@@ -31,6 +31,7 @@
 	border-bottom: 1px solid #EFF0F1;
 	background: #FFF url(../images/square-green.png) no-repeat 3px 50%;	
 	text-transform: none;
+	text-align: center;
 }
 #main h2 a {
 	background: none;
@@ -132,18 +133,32 @@ input.button {
 ********************************************/ 
 
 /* header links */
-
+.msgFlash {
+	color : #fff;
+	background-color : #18BC9C;
+	border-color : #18BC9C;
+	font-weight : 700;
+	line-height: 1.3333333;
+	border-radius: 6px;
+	font-size :18px;
+	padding : 10px 16px;
+	margin-left: 23%;
+	margin-right: 23%;
+	text-align :center; 
+}
 /* Connection User */
+ 
 #connex {
 	display: block;
 	border: solid 2px black;
-	width : 600px;
+	width : auto;
+	height: 670px;
 	margin: auto;
 } 
 
 #connex input {
 	border: solid 1px gray;
-	width : 350px;
+	width : 600px;
 	margin-top: 15px;
 	background-color: rgb(240,240,148); 
 } 
@@ -158,9 +173,31 @@ input.button {
 	display: inline-block;
 }
 
+#connex label, textarea {
+	display: inline-block;
+}
+
+#mefNews {
+	margin: auto;
+}
+
+#mefNews label, input {
+	display: inline-block;
+}
+
 #connex input[type=submit] {
 	background: none;
 	width : 125px;
-	margin: 15px; 
+	margin-top:120px; 
+	margin-left:15px; 
+	margin-right:115px;
+	margin-bottom:5px;
+}
 
-} 
+#connex textarea {
+	font: normal 1em Verdana, sans-serif;
+	border:1px solid #eee;
+	height:300px;
+	display:block;
+	color:#777;
+}

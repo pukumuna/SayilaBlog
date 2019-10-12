@@ -21,7 +21,6 @@ class Post extends Entity
  
   public function isValid()
   { 
-    //return !(empty($this->auteur) || empty($this->titre) || empty($this->chapo) || empty($this->content)  || empty($this->slug));
     return !(empty($this->auteur) || empty($this->titre) ||  empty($this->content) );
   } 
   
