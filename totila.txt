@@ -1,0 +1,5 @@
+je vais essayer de voir comment m'y prendre
+ce qui a été mis à jour 
+1) par la creation du fichier totila.txt
+ensuite avec son contenu. Pour cela je dois faire
+un git Pull ?
